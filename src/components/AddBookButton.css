@@ -1,0 +1,27 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 2em;
+}
+
+.add-book-btn {
+  width: 150px;
+  height: 30px;
+  border: none;
+  font-size: .9rem;
+  color: #ffffff;
+  background-color: #0ea5e9;
+  border-radius: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.add-book-btn:active {
+  background-color: #94a3b8;
+}
