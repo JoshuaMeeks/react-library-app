@@ -1,9 +1,13 @@
-import './AddBookButton.css';
+const AddBookButton = ({onClick}) => {
 
-export const AddBookButton = () => {
+
   return (
-    <div class="button-container">
-      <button class="add-book-btn">Add a book</button>
+    <div className='button-container'>
+      <button className='add-book-btn' onClick={onClick}>Add a book</button>
     </div>
   )
 }
+
+export default AddBookButton
+
+
