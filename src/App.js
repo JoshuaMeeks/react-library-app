@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <AddBookButton onClick={addBookClick}/>
-      <AddBookModal addBookModal={addBookModal} setAddBookModal={setAddBookModal}/>
+      <AddBookButton onClick={addBookClick} />
+      <AddBookModal addBookModal={addBookModal} setAddBookModal={setAddBookModal} />
       <CardContainer />
       <Footer />
     </div>

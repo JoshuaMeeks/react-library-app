@@ -1,10 +1,14 @@
-const AddBookModal = ({ addBookModal, setAddBookModal}) => {
+const AddBookModal = ({ addBookModal, setAddBookModal }) => {
+
+  const closeAddBookModal = (addBookModal) => {
+    return setAddBookModal(false)
+  }
 
   return ( addBookModal ? 
     <div className="modal-background">
       <div className="modal">
         <div className="close-modal-container">
-          <button className="close-modal-btn">&times;</button>
+          <button className="close-modal-btn" onClick={closeAddBookModal}>&times;</button>
         </div>
         <form className="modal-form">
           <input type="text" className="title" placeholder="Add a title" aria-required="true"/>
