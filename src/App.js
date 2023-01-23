@@ -7,20 +7,17 @@ import AddBookModal from './components/AddBookModal';
 import { CardContainer } from './components/CardContainer';
 
 function App() {
-  const [display, setDisplay] = useState('none')
-  const MODAL_DISPLAY = {
-    display: display
-  }
+  const [addBookModal, setAddBookModal] = useState(false)
 
   const addBookClick = () => {
-    setDisplay('flex')
+    setAddBookModal(prev => !prev)
   }
 
   return (
     <div className="App">
       <Header />
       <AddBookButton onClick={addBookClick}/>
-      <AddBookModal style={MODAL_DISPLAY}/>
+      <AddBookModal addBookModal={addBookModal} setAddBookModal={setAddBookModal}/>
       <CardContainer />
       <Footer />
     </div>

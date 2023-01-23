@@ -1,7 +1,7 @@
-const AddBookModal = ({ style }) => {
+const AddBookModal = ({ addBookModal, setAddBookModal}) => {
 
-  return (
-    <div className="modal-background" style={style}>
+  return ( addBookModal ? 
+    <div className="modal-background">
       <div className="modal">
         <div className="close-modal-container">
           <button className="close-modal-btn">&times;</button>
@@ -13,6 +13,7 @@ const AddBookModal = ({ style }) => {
         </form>
       </div>
     </div>
+    : null
   )
 }
 
