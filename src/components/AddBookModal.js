@@ -1,4 +1,8 @@
-const AddBookModal = ({ setLibrary, addBookModal, toggleBookModal, }) => {
+import { useState } from "react";
+
+const AddBookModal = ({ addBookModal, toggleBookModal, }) => {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +23,8 @@ const AddBookModal = ({ setLibrary, addBookModal, toggleBookModal, }) => {
             placeholder='Add a title' 
             id='title'
             name='title'
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <input 
             type="text" 
@@ -26,6 +32,8 @@ const AddBookModal = ({ setLibrary, addBookModal, toggleBookModal, }) => {
             placeholder="Add an author" 
             id='author'
             name='authore'
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
           />
           <button className="submit-book-btn">Submit</button>
         </form>
