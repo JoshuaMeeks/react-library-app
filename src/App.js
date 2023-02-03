@@ -7,20 +7,28 @@ import AddBookModal from './components/AddBookModal';
 import { CardContainer } from './components/CardContainer';
 
 function App() {
-  const [library, setLibrary] = useState([])
-
+  const [library, setLibrary] = useState([
+    { 
+      title: '',
+      author: ''
+    }
+])
   const [addBookModal, setAddBookModal] = useState(false)
 
   const toggleBookModal = () => {
     setAddBookModal(prev => !prev)
   }
 
+  // const addBook = () => {
+
+  // }
+
   return (
     <div className="App">
       <Header />
       <AddBookButton onClick={toggleBookModal} />
-      <AddBookModal addBookModal={addBookModal} setAddBookModal={setAddBookModal} setLibrary={setLibrary} toggleBookModal={toggleBookModal}/>
-      <CardContainer library={library}/>
+      <AddBookModal  setLibrary={setLibrary} addBookModal={addBookModal} toggleBookModal={toggleBookModal}/>
+      <CardContainer />
       <Footer />
     </div>
   );
