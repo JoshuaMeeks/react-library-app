@@ -9,7 +9,7 @@ const AddBookModal = ({ addBookModal, toggleBookModal, }) => {
     e.preventDefault();
     if (title && author) {
       const book = {title, author};
-      setLibrary((book) => {
+      setLibrary((library) => {
         return [...library, book]
       });
       setTitle('');
