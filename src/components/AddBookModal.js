@@ -8,9 +8,14 @@ const AddBookModal = ({ addBookModal, toggleBookModal, }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      console.log('passed')
+      const book = {title, author};
+      setLibrary((book) => {
+        return [...library, book]
+      });
+      setTitle('');
+      setAuthor('');
     } else {
-      console.log('failed')
+      console.log('failed');
     }
   }
 
