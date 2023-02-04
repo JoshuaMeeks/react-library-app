@@ -3,10 +3,15 @@ import { useState } from "react";
 const AddBookModal = ({ addBookModal, toggleBookModal, }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [library, setLibrary] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hi');
+    if (title && author) {
+      console.log('passed')
+    } else {
+      console.log('failed')
+    }
   }
 
 
