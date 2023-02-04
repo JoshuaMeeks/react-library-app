@@ -12,22 +12,42 @@ function App() {
       title: '',
       author: ''
     }
-])
+  ]);
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
   const [addBookModal, setAddBookModal] = useState(false)
-
   const toggleBookModal = () => {
     setAddBookModal(prev => !prev)
   }
-
-  // const addBook = () => {
-
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title && author) {
+      const book = {title, author};
+      setLibrary((library) => {
+        return [...library, book]
+      });
+      setTitle('');
+      setAuthor('');
+      toggleBookModal();
+    } else {
+      console.log('failed');
+    }
+  }
 
   return (
     <div className="App">
       <Header />
       <AddBookButton onClick={toggleBookModal} />
-      <AddBookModal  setLibrary={setLibrary} addBookModal={addBookModal} toggleBookModal={toggleBookModal}/>
+      <AddBookModal  
+        setLibrary={setLibrary} 
+        addBookModal={addBookModal} 
+        toggleBookModal={toggleBookModal}
+        onSubmit={handleSubmit}
+        title={title}
+        setTitle={setTitle}
+        author={author}
+        setAuthor={setAuthor}
+      />
       <CardContainer />
       <Footer />
     </div>

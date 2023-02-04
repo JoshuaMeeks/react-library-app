@@ -1,25 +1,4 @@
-import { useState } from "react";
-
-const AddBookModal = ({ addBookModal, toggleBookModal, }) => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [library, setLibrary] = useState([]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (title && author) {
-      const book = {title, author};
-      setLibrary((library) => {
-        return [...library, book]
-      });
-      setTitle('');
-      setAuthor('');
-      toggleBookModal();
-    } else {
-      console.log('failed');
-    }
-  }
-
+const AddBookModal = ({ addBookModal, toggleBookModal, onSubmit, title, author, setTitle, setAuthor}) => {
 
   return ( addBookModal ? 
     <div className="modal-background">
@@ -27,7 +6,7 @@ const AddBookModal = ({ addBookModal, toggleBookModal, }) => {
         <div className="close-modal-container">
           <button className="close-modal-btn" onClick={toggleBookModal}>&times;</button>
         </div>
-        <form className="modal-form" onSubmit={handleSubmit}>
+        <form className="modal-form" onSubmit={ onSubmit }>
           <input 
             type='text' 
             className='title' 
