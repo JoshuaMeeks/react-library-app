@@ -14,6 +14,7 @@ const AddBookModal = ({ addBookModal, toggleBookModal, }) => {
       });
       setTitle('');
       setAuthor('');
+      toggleBookModal();
     } else {
       console.log('failed');
     }
