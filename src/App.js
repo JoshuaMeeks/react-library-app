@@ -26,7 +26,7 @@ function App() {
     if (title && author) {
       const book = {title, author};
       setLibrary((library) => {
-        return [...library, book]
+        return [...library, book];
       });
       setTitle('');
       setAuthor('');
@@ -51,7 +51,12 @@ function App() {
         setAuthor={setAuthor}
       />
       <div className='card-container'>
-        <BookCard />
+        { library.map((book) => {
+          const {title, author} = book;
+          if (title && author) {
+          return <BookCard title={title} author={author} />
+          }
+        })}
       </div>
       <Footer />
     </div>
