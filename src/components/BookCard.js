@@ -11,8 +11,8 @@ export const BookCard = ({title, author}) => {
         <p className="book-author">{author}</p>
       </div>
       <div className="card-btn-container">
-        <button className="edit-btn">Edit</button>
-        <button className="remove-btn">Remove</button>
+        <button className="edit-btn" onClick={() => console.log('edit')}>Edit</button>
+        <button className="remove-btn" onClick={() => console.log('remove')}>Remove</button>
       </div>
     </div>
   );
