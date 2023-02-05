@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import AddBookButton from './components/AddBookButton';
@@ -24,17 +24,20 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      const book = {title, author};
+      const book = {id: new Date().getTime().toString(), title, author};
       setLibrary((library) => {
         return [...library, book];
       });
       setTitle('');
       setAuthor('');
       toggleBookModal();
+      console.log(book)
     } else {
       console.log('failed');
     }
   };
+
+
 
   return (
     <div className="App">
@@ -52,9 +55,9 @@ function App() {
       />
       <div className='card-container'>
         { library.map((book) => {
-          const {title, author} = book;
+          const {id, title, author} = book;
           if (title && author) {
-          return <BookCard title={title} author={author} />
+          return <BookCard key={id} title={title} author={author} />
           }
         })}
       </div>
