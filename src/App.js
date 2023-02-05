@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import './App.css';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import AddBookButton from './components/AddBookButton';
 import AddBookModal from './components/AddBookModal';
 import { CardContainer } from './components/CardContainer';
+import { BookCard } from './components/BookCard';
 
 function App() {
   const [library, setLibrary] = useState([
@@ -13,12 +13,15 @@ function App() {
       author: ''
     }
   ]);
+
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [addBookModal, setAddBookModal] = useState(false)
+  const [addBookModal, setAddBookModal] = useState(false);
+
   const toggleBookModal = () => {
-    setAddBookModal(prev => !prev)
-  }
+    setAddBookModal(prev => !prev);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
@@ -32,7 +35,7 @@ function App() {
     } else {
       console.log('failed');
     }
-  }
+  };
 
   return (
     <div className="App">
@@ -48,7 +51,11 @@ function App() {
         author={author}
         setAuthor={setAuthor}
       />
-      <CardContainer />
+      <CardContainer>
+        {library.map((book) => {
+          console.log('testing map')
+        })}
+      </CardContainer>
       <Footer />
     </div>
   );
