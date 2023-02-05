@@ -41,6 +41,10 @@ function App() {
     setLibrary(newLibrary);
   }
 
+  const editBook = (id) => {
+    console.log(id);
+  }
+
   return (
     <div className="App">
       <Header />
@@ -59,7 +63,16 @@ function App() {
         { library.map((book) => {
           const {id, title, author} = book;
           if (title && author) {
-          return <BookCard key={id} id={id} title={title} author={author} removeBook={removeBook}/>
+          return (
+            <BookCard 
+              key={id} 
+              id={id} 
+              title={title} 
+              author={author} 
+              removeBook={removeBook}
+              editBook={editBook}
+            />
+          );
           } return null;
         })}
       </div>
