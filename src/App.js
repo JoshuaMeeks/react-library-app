@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import AddBookButton from './components/AddBookButton';
 import AddBookModal from './components/AddBookModal';
-import { CardContainer } from './components/CardContainer';
 import { BookCard } from './components/BookCard';
 
 function App() {
@@ -51,11 +50,9 @@ function App() {
         author={author}
         setAuthor={setAuthor}
       />
-      <CardContainer>
-        {library.map((book) => {
-          console.log('testing map')
-        })}
-      </CardContainer>
+      <div className='card-container'>
+        <BookCard />
+      </div>
       <Footer />
     </div>
   );
