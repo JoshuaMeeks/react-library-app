@@ -31,13 +31,15 @@ function App() {
       setTitle('');
       setAuthor('');
       toggleBookModal();
-      console.log(book)
     } else {
       console.log('failed');
     }
   };
 
-
+  const removeBook = (id) => {
+    let newLibrary = library.filter((book) => book.id !== id);
+    setLibrary(newLibrary);
+  }
 
   return (
     <div className="App">
@@ -57,8 +59,8 @@ function App() {
         { library.map((book) => {
           const {id, title, author} = book;
           if (title && author) {
-          return <BookCard key={id} title={title} author={author} />
-          }
+          return <BookCard key={id} id={id} title={title} author={author} removeBook={removeBook}/>
+          } return null;
         })}
       </div>
       <Footer />

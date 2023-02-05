@@ -1,4 +1,4 @@
-export const BookCard = ({title, author}) => {
+export const BookCard = ({ id, title, author, removeBook }) => {
   return (
     <div className="card-div">
       <div className="card-cover-container">
@@ -11,8 +11,8 @@ export const BookCard = ({title, author}) => {
         <p className="book-author">{author}</p>
       </div>
       <div className="card-btn-container">
-        <button className="edit-btn" onClick={() => console.log('edit')}>Edit</button>
-        <button className="remove-btn" onClick={() => console.log('remove')}>Remove</button>
+        <button className="edit-btn" onClick={() => console.log(id)}>Edit</button>
+        <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
       </div>
     </div>
   );
