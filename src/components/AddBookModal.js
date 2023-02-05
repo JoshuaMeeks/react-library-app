@@ -1,4 +1,4 @@
-const AddBookModal = ({ addBookModal, toggleBookModal, onSubmit, title, author, setTitle, setAuthor}) => {
+const AddBookModal = ({addBookModal, toggleBookModal, onSubmit, title, author, setTitle, setAuthor}) => {
 
   return ( addBookModal ? 
     <div className="modal-background">
