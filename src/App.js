@@ -20,11 +20,11 @@ function App() {
   const [editBook, setEditBook] = useState(false);
 
   const toggleBookModal = () => {
-    setAddBookModal(prev => !prev);
+    setAddBookModal(addBookModal => !addBookModal);
   };
 
   const toggleEditModal = () => {
-    setEditBook(prev => !prev);
+    setEditBook(editBook => !editBook);
   };
 
   const handleSubmit = (e) => {

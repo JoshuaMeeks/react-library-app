@@ -73,7 +73,7 @@ body {
 }
 
 .edit-modal-background {
-  display: none;
+  display: flex;
   justify-content: center;
   padding-top: 10%;
   position: fixed; 
