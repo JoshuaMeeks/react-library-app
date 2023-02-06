@@ -4,6 +4,7 @@ import { Footer } from './components/Footer';
 import AddBookButton from './components/AddBookButton';
 import AddBookModal from './components/AddBookModal';
 import { BookCard } from './components/BookCard';
+import { EditBookModal } from './components/EditBookModal';
 
 function App() {
   const [library, setLibrary] = useState([
@@ -16,9 +17,14 @@ function App() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [addBookModal, setAddBookModal] = useState(false);
+  const [editBook, setEditBook] = useState(false);
 
   const toggleBookModal = () => {
     setAddBookModal(prev => !prev);
+  };
+
+  const toggleEditModal = () => {
+    setEditBook(prev => !prev)
   };
 
   const handleSubmit = (e) => {
@@ -39,10 +45,6 @@ function App() {
   const removeBook = (id) => {
     let newLibrary = library.filter((book) => book.id !== id);
     setLibrary(newLibrary);
-  }
-
-  const editBook = (id) => {
-    console.log(id);
   }
 
   return (
@@ -70,12 +72,13 @@ function App() {
               title={title} 
               author={author} 
               removeBook={removeBook}
-              editBook={editBook}
+              toggleEditModal={toggleEditModal}
             />
           );
           } return null;
         })}
       </div>
+      <EditBookModal editBook={editBook} />
       <Footer />
     </div>
   );
