@@ -24,7 +24,7 @@ function App() {
   };
 
   const toggleEditModal = () => {
-    setEditBook(prev => !prev)
+    setEditBook(prev => !prev);
   };
 
   const handleSubmit = (e) => {
@@ -50,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <AddBookButton onClick={toggleBookModal} />
+      <AddBookButton toggleBookModal={toggleBookModal} />
       <AddBookModal  
         setLibrary={setLibrary} 
         addBookModal={addBookModal} 
