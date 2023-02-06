@@ -78,7 +78,10 @@ function App() {
           } return null;
         })}
       </div>
-      <EditBookModal editBook={editBook} />
+      <EditBookModal 
+        editBook={editBook} 
+        toggleEditModal={toggleEditModal}
+      />
       <Footer />
     </div>
   );

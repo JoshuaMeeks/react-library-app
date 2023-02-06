@@ -1,7 +1,7 @@
 
-export const EditBookModal = ({ editBook }) => {
+export const EditBookModal = ({ editBook, toggleEditModal }) => {
   return ( editBook ?
-    <div>EditBookModal</div>
+      <div>TEST</div>
     : null
   )
 }
