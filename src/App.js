@@ -25,8 +25,6 @@ function App() {
       setTitle('');
       setAuthor('');
       toggleBookModal();
-
-      console.log(library);
     };
   }
 
@@ -45,15 +43,16 @@ function App() {
         setAuthor={setAuthor}
       />
       <div className='card-container'>
-        { library.reverse().map((book) => {
-          const {id, img, title, author} = book;
+        { library.map((book) => {
+          const {img, title, author} = book;
           if (title && author) {
           return (
             <BookCard 
-              key={id} 
               img={img}
               title={title} 
-              author={author} 
+              author={author}
+              library={library} 
+              setLibrary={setLibrary}
             />
           );
           } return null;
