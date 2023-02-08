@@ -1,5 +1,6 @@
 
-export const EditBookModal = ({ editBook, toggleEditModal }) => {
+export const EditBookModal = ({ editBook, toggleEditModal, library, setLibrary, submitEdit }) => {
+
   return ( editBook ?
       <div className="edit-modal-background">
         <div className="edit-modal">
@@ -9,7 +10,7 @@ export const EditBookModal = ({ editBook, toggleEditModal }) => {
           <form className="edit-modal-form">
             <input type="text" className="edit-title" />
             <input type="text" className="edit-author" />
-            <button type="submit" className="edit-submit-book-btn">Edit</button>
+            <button type="submit" className="edit-submit-book-btn" onClick={() => submitEdit()}>Edit</button>
           </form>
         </div>
       </div>

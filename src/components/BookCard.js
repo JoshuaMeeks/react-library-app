@@ -1,9 +1,9 @@
-export const BookCard = ({ id, title, author, removeBook, toggleEditModal }) => {
+export const BookCard = ({ key, img, title, author, removeBook, toggle }) => {
   return (
     <div className="card-div">
       <div className="card-cover-container">
         <div className="book-cover-img">
-          <img src="" alt="" />
+          <img src={img} alt="book cover" />
         </div>
       </div>
       <div className="card-info-container">
@@ -11,9 +11,9 @@ export const BookCard = ({ id, title, author, removeBook, toggleEditModal }) => 
         <p className="book-author">{author}</p>
       </div>
       <div className="card-btn-container">
-        <button className="unread" onClick={() => console.log(id)}>Unread</button>
-        <button className="edit-btn" onClick={() => toggleEditModal()}>Edit</button>
-        <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
+        <button className="unread" onClick={() => console.log(key)}>Unread</button>
+        <button className="edit-btn" onClick={() => toggle()}>Edit</button>
+        <button className="remove-btn" onClick={() => removeBook(key)}>Remove</button>
       </div>
     </div>
   );

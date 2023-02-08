@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import AddBookButton from './components/AddBookButton';
@@ -7,40 +7,36 @@ import { BookCard } from './components/BookCard';
 import { EditBookModal } from './components/EditBookModal';
 
 function App() {
-  const [library, setLibrary] = useState([
-    { 
-      title: '',
-      author: ''
-    }
-  ]);
-
+  const [library, setLibrary] = useState([{}]);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [addBookModal, setAddBookModal] = useState(false);
-  const [editBook, setEditBook] = useState(false);
+  const [state, setState] = useState(false);
 
   const toggleBookModal = () => {
-    setAddBookModal(addBookModal => !addBookModal);
+    setAddBookModal(state => !state);
   };
 
-  const toggleEditModal = () => {
-    setEditBook(editBook => !editBook);
-  };
+  const toggle = () => {
+    setState(!state)
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (title && author) {
-      const book = {id: new Date().getTime().toString(), title, author};
-      setLibrary((library) => {
-        return [...library, book];
-      });
-      setTitle('');
-      setAuthor('');
-      toggleBookModal();
-    } else {
-      console.log('failed');
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (title && author) {
+  //     setTitle('');
+  //     setAuthor('');
+  //     toggleBookModal();
+  //     const res = fetch(`http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`)
+  //     .then(data => res.json())
+  //     .then(img => `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`)
+  // };
+
+  useEffect(() => {
+    const res = fetch(`http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`)
+    .then((data) => {res.json(data)})
+    .then((data) => {console.log(data.docs[0])})
+  }, [])
 
   const removeBook = (id) => {
     let newLibrary = library.filter((book) => book.id !== id);
@@ -55,7 +51,7 @@ function App() {
         setLibrary={setLibrary} 
         addBookModal={addBookModal} 
         toggleBookModal={toggleBookModal}
-        onSubmit={handleSubmit}
+        // handleSubmit={handleSubmit}
         title={title}
         setTitle={setTitle}
         author={author}
@@ -63,24 +59,26 @@ function App() {
       />
       <div className='card-container'>
         { library.map((book) => {
-          const {id, title, author} = book;
+          const {id, img, title, author} = book;
           if (title && author) {
           return (
             <BookCard 
               key={id} 
-              id={id} 
+              img={img}
               title={title} 
               author={author} 
               removeBook={removeBook}
-              toggleEditModal={toggleEditModal}
+              toggle={toggle}
             />
           );
           } return null;
         })}
       </div>
       <EditBookModal 
-        editBook={editBook} 
-        toggleEditModal={toggleEditModal}
+        // editBook={editBook} 
+        toggle={toggle}
+        library={library}
+        setLibrary={setLibrary}
       />
       <Footer />
     </div>
