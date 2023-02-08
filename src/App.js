@@ -32,9 +32,11 @@ function App() {
   //     .then(img => `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`)
   // };
 
+  // ${title.replace(/ /g, '+')}
+
   useEffect(() => {
-    const res = fetch(`http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`)
-    .then((data) => {res.json(data)})
+    const res = fetch(`http://openlibrary.org/search.json?q=harrypotterandthechamberofsecrets`)
+    .then((res) => {data = JSON.parse(res)})
     .then((data) => {console.log(data.docs[0])})
   }, [])
 
