@@ -21,24 +21,15 @@ function App() {
     setState(!state)
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (title && author) {
-  //     setTitle('');
-  //     setAuthor('');
-  //     toggleBookModal();
-  //     const res = fetch(`http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`)
-  //     .then(data => res.json())
-  //     .then(img => `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`)
-  // };
-
-  // ${title.replace(/ /g, '+')}
-
-  useEffect(() => {
-    fetch(`http://openlibrary.org/search.json?q=harry+potter+and+the+chamber+of+secrets`)
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-  }, [])
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title && author) {
+      console.log(title);
+      setTitle('');
+      setAuthor('');
+      toggleBookModal();
+    };
+  }
 
   const removeBook = (id) => {
     let newLibrary = library.filter((book) => book.id !== id);
@@ -53,7 +44,7 @@ function App() {
         setLibrary={setLibrary} 
         addBookModal={addBookModal} 
         toggleBookModal={toggleBookModal}
-        // handleSubmit={handleSubmit}
+        handleSubmit={handleSubmit}
         title={title}
         setTitle={setTitle}
         author={author}
