@@ -35,9 +35,9 @@ function App() {
   // ${title.replace(/ /g, '+')}
 
   useEffect(() => {
-    const res = fetch(`http://openlibrary.org/search.json?q=harrypotterandthechamberofsecrets`)
-    .then((res) => {data = JSON.parse(res)})
-    .then((data) => {console.log(data.docs[0])})
+    fetch(`http://openlibrary.org/search.json?q=harry+potter+and+the+chamber+of+secrets`)
+    .then((res) => res.json())
+    .then((data) => console.log(data))
   }, [])
 
   const removeBook = (id) => {
