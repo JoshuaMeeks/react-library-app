@@ -1,39 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import AddBookButton from './components/AddBookButton';
 import AddBookModal from './components/AddBookModal';
 import { BookCard } from './components/BookCard';
-import { EditBookModal } from './components/EditBookModal';
 
 function App() {
-  const [library, setLibrary] = useState([{}]);
+  const [library, setLibrary] = useState([]);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [addBookModal, setAddBookModal] = useState(false);
-  const [state, setState] = useState(false);
 
   const toggleBookModal = () => {
     setAddBookModal(state => !state);
   };
 
-  const toggle = () => {
-    setState(!state)
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      console.log(title);
+      const book = {title, author};
+      setLibrary((library) => {
+        return [...library, book]
+      })
       setTitle('');
       setAuthor('');
       toggleBookModal();
-    };
-  }
 
-  const removeBook = (id) => {
-    let newLibrary = library.filter((book) => book.id !== id);
-    setLibrary(newLibrary);
+      console.log(library);
+    };
   }
 
   return (
@@ -51,7 +45,7 @@ function App() {
         setAuthor={setAuthor}
       />
       <div className='card-container'>
-        { library.map((book) => {
+        { library.reverse().map((book) => {
           const {id, img, title, author} = book;
           if (title && author) {
           return (
@@ -60,19 +54,11 @@ function App() {
               img={img}
               title={title} 
               author={author} 
-              removeBook={removeBook}
-              toggle={toggle}
             />
           );
           } return null;
         })}
       </div>
-      <EditBookModal 
-        // editBook={editBook} 
-        toggle={toggle}
-        library={library}
-        setLibrary={setLibrary}
-      />
       <Footer />
     </div>
   );

@@ -1,4 +1,4 @@
-export const BookCard = ({ key, img, title, author, removeBook, toggle }) => {
+export const BookCard = ({ key, img, title, author, toggle }) => {
   return (
     <div className="card-div">
       <div className="card-cover-container">
@@ -13,7 +13,7 @@ export const BookCard = ({ key, img, title, author, removeBook, toggle }) => {
       <div className="card-btn-container">
         <button className="unread" onClick={() => console.log(key)}>Unread</button>
         <button className="edit-btn" onClick={() => toggle()}>Edit</button>
-        <button className="remove-btn" onClick={() => removeBook(key)}>Remove</button>
+        <button className="remove-btn" onClick={() => console.log(key)}>Remove</button>
       </div>
     </div>
   );
