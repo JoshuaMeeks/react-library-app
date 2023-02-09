@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const BookCard = ({ key, title, author, toggle, library, setLibrary, removeBook}) => {
+export const BookCard = ({ key, title, author, toggle, removeBook}) => {
   const url = `http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`;
 
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,6 @@ export const BookCard = ({ key, title, author, toggle, library, setLibrary, remo
   useEffect(() => {
     fetchImage();
   }, [])
-
 
   if (loading) {
     return (
