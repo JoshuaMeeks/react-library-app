@@ -221,6 +221,7 @@ button:hover {
 .card-cover-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 180px;
   background-color: #94a3b8;
 }
@@ -228,6 +229,11 @@ button:hover {
 .book-cover-img > img {
   height: 180px;
   max-width: 140px; 
+}
+
+.book-cover-loading-img>img {
+  height: 60px;
+  max-width: 60px;
 }
 
 .card-info-container {

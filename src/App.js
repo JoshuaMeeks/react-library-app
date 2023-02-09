@@ -48,7 +48,7 @@ function App() {
       />
       <div className='card-container'>
         { library.map((book) => {
-          const {id = Math.floor(Math.random() * 9999), img, title, author} = book;
+          const {id, img, title, author} = book;
           if (title && author) {
           return (
             <BookCard 
@@ -57,6 +57,8 @@ function App() {
               title={title} 
               author={author}
               removeBook={removeBook}
+              library={library}
+              setLibrary={setLibrary}
             />
           );
           } return null;

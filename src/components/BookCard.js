@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-export const BookCard = ({ key, title, author, toggle, removeBook}) => {
+export const BookCard = ({ key, title, author, toggle, removeBook, library, setLibrary}) => {
   const url = `http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`;
 
   const [loading, setLoading] = useState(true);
   const [img, setImg] = useState('')
 
-  const fetchImage = async () => {
+  const fetchImage = useCallback(async () => {
     setLoading(true);
     const response = await fetch(url);
     const data = await response.json();
     const img = await `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`;
     setImg(img);
     setLoading(false);
-  }
-
+  })
+  
   useEffect(() => {
     fetchImage();
   }, [])
@@ -23,7 +23,7 @@ export const BookCard = ({ key, title, author, toggle, removeBook}) => {
     return (
       <div className="card-div">
         <div className="card-cover-container">
-          <div className="book-cover-img">
+          <div className="book-cover-loading-img">
             <img src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif' alt="book cover"/>
           </div>
         </div>
