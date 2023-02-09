@@ -28,6 +28,10 @@ function App() {
     };
   }
 
+  const removeBook = (id) => {
+    setLibrary(library.filter(book => book.id !== id));
+  }
+
   return (
     <div className="App">
       <Header />
@@ -44,15 +48,15 @@ function App() {
       />
       <div className='card-container'>
         { library.map((book) => {
-          const {img, title, author} = book;
+          const {id = Math.floor(Math.random() * 9999), img, title, author} = book;
           if (title && author) {
           return (
             <BookCard 
+              key={id}
               img={img}
               title={title} 
               author={author}
-              library={library} 
-              setLibrary={setLibrary}
+              removeBook={removeBook}
             />
           );
           } return null;

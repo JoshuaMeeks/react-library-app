@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const BookCard = ({ key, title, author, toggle, library, setLibrary}) => {
+export const BookCard = ({ key, title, author, toggle, library, setLibrary, removeBook}) => {
   const url = `http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`;
 
   const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ export const BookCard = ({ key, title, author, toggle, library, setLibrary}) => 
 
   useEffect(() => {
     fetchImage();
-  }, [img])
+  }, [])
 
 
   if (loading) {
@@ -54,7 +54,7 @@ export const BookCard = ({ key, title, author, toggle, library, setLibrary}) => 
       <div className="card-btn-container">
         <button className="unread" onClick={() => console.log(key)}>Unread</button>
         <button className="edit-btn" onClick={() => toggle()}>Edit</button>
-        <button className="remove-btn" onClick={() => console.log(url)}>Remove</button>
+        <button className="remove-btn" onClick={() => removeBook(key)}>Remove</button>
       </div>
     </div>
   );}
