@@ -5,12 +5,13 @@ import AddBookButton from './components/AddBookButton';
 import AddBookModal from './components/AddBookModal';
 import { BookCard } from './components/BookCard';
 
+
 function App() {
   const [library, setLibrary] = useState([]);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [addBookModal, setAddBookModal] = useState(false);
-
+  
   const toggleBookModal = () => {
     setAddBookModal(state => !state);
   };
@@ -47,13 +48,11 @@ function App() {
         setAuthor={setAuthor}
       />
       <div className='card-container'>
-        { library.map((book) => {
-          const {id, img, title, author} = book;
+        {library.map((book) => {
+          const {title, author} = book;
           if (title && author) {
           return (
             <BookCard 
-              key={id}
-              img={img}
               title={title} 
               author={author}
               removeBook={removeBook}

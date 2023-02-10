@@ -1,23 +1,34 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
+const url = `http://openlibrary.org/search.json?q=`;
 
-export const BookCard = ({ key, title, author, toggle, removeBook, library, setLibrary}) => {
-  const url = `http://openlibrary.org/search.json?q=${title.replace(/ /g, '+')}`;
-
+export const BookCard = ({ key, title, author, toggle, removeBook}) => {
   const [loading, setLoading] = useState(true);
   const [img, setImg] = useState('')
+  const [searchTerm, setSearchTerm] = useState('a')
 
-  const fetchImage = useCallback(async () => {
+  const fetchBookData = async () => {
     setLoading(true);
-    const response = await fetch(url);
-    const data = await response.json();
-    const img = await `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`;
-    setImg(img);
-    setLoading(false);
-  })
-  
+    try {
+      const response = await fetch(`${url}${title.replace(/ /g, '+')}`);
+      const data = await response.json();
+      setImg(`https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`);
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
-    fetchImage();
-  }, [])
+    fetchBookData();
+  }, [searchTerm])
+  
+  //   setLoading(true);
+  //   fetchImage();
+  //   setLoading(false);
+  // }, [title, loading])
+  
+  // return `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`;
+  // ${title.replace(/ /g, '+')}
 
   if (loading) {
     return (
@@ -34,27 +45,28 @@ export const BookCard = ({ key, title, author, toggle, removeBook, library, setL
         <div className="card-btn-container">
           <button className="unread" onClick={() => console.log(key)}>Unread</button>
           <button className="edit-btn" onClick={() => toggle()}>Edit</button>
-          <button className="remove-btn" onClick={() => console.log(url)}>Remove</button>
+          <button className="remove-btn" onClick={() => removeBook()}>Remove</button>
         </div>
       </div>
     )
   } else {
-  return (
-    <div className="card-div">
-      <div className="card-cover-container">
-        <div className="book-cover-img">
-          <img src={img} alt="book cover" />
+    return (
+      <div className="card-div">
+        <div className="card-cover-container">
+          <div className="book-cover-img">
+            <img src={img} alt="book cover" />
+          </div>
+        </div>
+        <div className="card-info-container">
+          <h2 className="book-title">{title}</h2>
+          <p className="book-author">{author}</p>
+        </div>
+        <div className="card-btn-container">
+          <button className="unread" onClick={() => console.log(key)}>Unread</button>
+          <button className="edit-btn" onClick={() => toggle()}>Edit</button>
+          <button className="remove-btn" onClick={() => removeBook(key)}>Remove</button>
         </div>
       </div>
-      <div className="card-info-container">
-        <h2 className="book-title">{title}</h2>
-        <p className="book-author">{author}</p>
-      </div>
-      <div className="card-btn-container">
-        <button className="unread" onClick={() => console.log(key)}>Unread</button>
-        <button className="edit-btn" onClick={() => toggle()}>Edit</button>
-        <button className="remove-btn" onClick={() => removeBook(key)}>Remove</button>
-      </div>
-    </div>
-  );}
+    );
+  }
 }
