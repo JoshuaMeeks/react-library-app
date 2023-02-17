@@ -10,10 +10,10 @@ function App() {
   const [library, setLibrary] = useState([]);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [addBookModal, setAddBookModal] = useState(false);
+  const [bookModal, setBookModal] = useState(false);
   
   const toggleBookModal = () => {
-    setAddBookModal(state => !state);
+    setBookModal(state => !state);
   };
 
   const handleSubmit = (e) => {
@@ -39,7 +39,7 @@ function App() {
       <AddBookButton toggleBookModal={toggleBookModal} />
       <AddBookModal  
         setLibrary={setLibrary} 
-        addBookModal={addBookModal} 
+        bookModal={bookModal} 
         toggleBookModal={toggleBookModal}
         handleSubmit={handleSubmit}
         title={title}

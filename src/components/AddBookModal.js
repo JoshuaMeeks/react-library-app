@@ -1,7 +1,7 @@
-const AddBookModal = ({addBookModal, toggleBookModal, handleSubmit, title, author, setTitle, setAuthor}) => {
+const AddBookModal = ({bookModal, toggleBookModal, handleSubmit, title, author, setTitle, setAuthor}) => {
 
-  return ( addBookModal ? 
-    <div className={`modal-background modal-display`}>
+  return (
+    <div className={bookModal ? `modal-background` : `modal-background modal-display`}>
       <div className="modal">
         <div className="close-modal-container">
           <button className="close-modal-btn" onClick={toggleBookModal}>&times;</button>
@@ -29,7 +29,6 @@ const AddBookModal = ({addBookModal, toggleBookModal, handleSubmit, title, autho
         </form>
       </div>
     </div>
-    : null
   )
 }
 
