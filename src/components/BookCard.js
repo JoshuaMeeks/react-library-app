@@ -3,32 +3,25 @@ const url = `http://openlibrary.org/search.json?q=`;
 
 export const BookCard = ({ key, title, author, toggle, removeBook}) => {
   const [loading, setLoading] = useState(true);
-  const [img, setImg] = useState('')
-  const [searchTerm, setSearchTerm] = useState('a')
+  const [id, setID] = useState('')
+  const [img, setImg] = useState('');
+  const [book, setBook] = useState({id: '', img: '', title, author});
 
   const fetchBookData = async () => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${title.replace(/ /g, '+')}`);
       const data = await response.json();
-      setImg(`https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`);
-      setLoading(false)
+      console.log(`https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`);
+      
     } catch (error) {
       console.log(error)
     }
   }
-
+  
   useEffect(() => {
     fetchBookData();
-  }, [searchTerm])
-  
-  //   setLoading(true);
-  //   fetchImage();
-  //   setLoading(false);
-  // }, [title, loading])
-  
-  // return `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`;
-  // ${title.replace(/ /g, '+')}
+  }, [])
 
   if (loading) {
     return (
@@ -62,9 +55,9 @@ export const BookCard = ({ key, title, author, toggle, removeBook}) => {
           <p className="book-author">{author}</p>
         </div>
         <div className="card-btn-container">
-          <button className="unread" onClick={() => console.log(key)}>Unread</button>
+          <button className="unread" onClick={() => console.log(id)}>Unread</button>
           <button className="edit-btn" onClick={() => toggle()}>Edit</button>
-          <button className="remove-btn" onClick={() => removeBook(key)}>Remove</button>
+          <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
         </div>
       </div>
     );
