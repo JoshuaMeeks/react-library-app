@@ -32,6 +32,7 @@ function App() {
 
   const toggleReadStatus = (id) => {
     setReadStatus(state => !state);
+    console.log(readStatus);
   };
 
   const removeBook = (id) => {
@@ -63,8 +64,7 @@ function App() {
               removeBook={removeBook}
               library={library}
               setLibrary={setLibrary}
-              readStatus={readStatus}
-              setReadStatus={setReadStatus}
+              toggleReadStatus={toggleReadStatus}
             />
           );
           } return null;
