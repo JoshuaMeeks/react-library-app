@@ -10,12 +10,12 @@ function App() {
   const [library, setLibrary] = useState([]);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [bookModal, setBookModal] = useState(false);
   
   const toggleBookModal = () => {
     setBookModal(state => !state);
   };
-
+  const [bookModal, setBookModal] = useState(false);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
