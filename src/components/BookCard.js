@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 const url = `http://openlibrary.org/search.json?q=`;
 
-export const BookCard = ({ key, title, author, toggle, removeBook}) => {
+export const BookCard = ({ key, title, author, toggle, removeBook, setReadStatus}) => {
   const [loading, setLoading] = useState(true);
   const [id, setID] = useState('')
   const [img, setImg] = useState('');
@@ -55,7 +55,7 @@ export const BookCard = ({ key, title, author, toggle, removeBook}) => {
           <p className="book-author">{author}</p>
         </div>
         <div className="card-btn-container">
-          <button className="unread" onClick={() => console.log(id)}>Unread</button>
+          <button className="unread" onClick={() => setReadStatus(id)}>Unread</button>
           <button className="edit-btn" onClick={() => toggle()}>Edit</button>
           <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
         </div>

@@ -22,17 +22,21 @@ function App() {
     if (title && author) {
       const book = {title, author};
       setLibrary((library) => {
-        return [...library, book]
+        return [...library, book];
       })
       setTitle('');
       setAuthor('');
       toggleBookModal();
     };
-  }
+  };
+
+  const toggleReadStatus = (id) => {
+    setReadStatus(state => !state);
+  };
 
   const removeBook = (id) => {
     setLibrary(library.filter(book => book.id !== id));
-  }
+  };
 
   return (
     <div className="App">
@@ -59,6 +63,8 @@ function App() {
               removeBook={removeBook}
               library={library}
               setLibrary={setLibrary}
+              readStatus={readStatus}
+              setReadStatus={setReadStatus}
             />
           );
           } return null;
