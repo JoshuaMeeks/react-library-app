@@ -36,7 +36,7 @@ export const BookCard = ({ key, title, author, toggle, removeBook, readStatus, t
           <p className="book-author">{author}</p>
         </div>
         <div className="card-btn-container">
-          <button className={readStatus ? `read` : `unread`} onClick={() => toggleReadStatus(id)}>Unread</button>
+          <button className={readStatus ? `read` : `unread`} onClick={() => toggleReadStatus(id)}>{readStatus ? `Read` : `Unread`}</button>
           <button className="edit-btn" onClick={() => console.log(key)}>Edit</button>
           <button className="remove-btn" onClick={() => removeBook()}>Remove</button>
         </div>
@@ -55,7 +55,7 @@ export const BookCard = ({ key, title, author, toggle, removeBook, readStatus, t
           <p className="book-author">{author}</p>
         </div>
         <div className="card-btn-container">
-          <button className={readStatus ? `read` : `unread`} onClick={() => toggleReadStatus(id)}>Unread</button>
+          <button className={readStatus ? `read` : `unread`} onClick={() => toggleReadStatus(id)}>{readStatus ? `Read` : `Unread`}</button>
           <button className="edit-btn" onClick={() => console.log(key)}>Edit</button>
           <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
         </div>
