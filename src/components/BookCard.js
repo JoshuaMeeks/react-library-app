@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 const url = `http://openlibrary.org/search.json?q=`;
 
-export const BookCard = ({ key, title, author, toggle, removeBook, toggleReadStatus}) => {
+export const BookCard = ({ key, title, author, toggle, removeBook, readStatus, toggleReadStatus}) => {
   const [loading, setLoading] = useState(true);
   const [id, setID] = useState('')
   const [img, setImg] = useState('');
@@ -36,7 +36,7 @@ export const BookCard = ({ key, title, author, toggle, removeBook, toggleReadSta
           <p className="book-author">{author}</p>
         </div>
         <div className="card-btn-container">
-          <button className="unread" onClick={() => toggleReadStatus(id)}>Unread</button>
+          <button className={readStatus ? `read` : `unread`} onClick={() => toggleReadStatus(id)}>Unread</button>
           <button className="edit-btn" onClick={() => console.log(key)}>Edit</button>
           <button className="remove-btn" onClick={() => removeBook()}>Remove</button>
         </div>
@@ -55,8 +55,8 @@ export const BookCard = ({ key, title, author, toggle, removeBook, toggleReadSta
           <p className="book-author">{author}</p>
         </div>
         <div className="card-btn-container">
-          <button className="unread" onClick={() => toggleReadStatus(id)}>Unread</button>
-          <button className="edit-btn" onClick={() => toggle()}>Edit</button>
+          <button className={readStatus ? `read` : `unread`} onClick={() => toggleReadStatus(id)}>Unread</button>
+          <button className="edit-btn" onClick={() => console.log(key)}>Edit</button>
           <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
         </div>
       </div>

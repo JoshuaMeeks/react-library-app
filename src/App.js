@@ -64,6 +64,7 @@ function App() {
               removeBook={removeBook}
               library={library}
               setLibrary={setLibrary}
+              readStatus={readStatus}
               toggleReadStatus={toggleReadStatus}
             />
           );
