@@ -18,10 +18,12 @@ const AddBookModal = ({
             className="close-modal-btn" 
             onClick={() => {
               if (editing) {
-                setEditing(false)
-                toggleBookModal()
+                setEditing(false);
+                setTitle('');
+                setAuthor('');
+                toggleBookModal();
               } else {
-                toggleBookModal()
+                toggleBookModal();
               }
             }}>
             &times;
