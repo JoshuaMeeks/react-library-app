@@ -8,9 +8,7 @@ import { BookCard } from './components/BookCard';
 const url = `http://openlibrary.org/search.json?q=`;
 
 function App() {
-  const [book, setBook] = useState({});
   const [library, setLibrary] = useState([]);
-  const [id, setID] = useState();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [bookModal, setBookModal] = useState(false);
@@ -25,27 +23,29 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      const book = {title, author};
-      setLibrary((library) => {
-        return [...library, book];
-      })
-      console.log(library)
+      fetchBookData(title);
       setTitle('');
       setAuthor('');
       toggleBookModal();
     };
   };
-
-    const fetchBookData = async (title) => {
-    setLoading(false);
+  
+  const fetchBookData = async (title, author) => {
+    setLoading(true);
     try {
       const response = await fetch(`${url}${title.replace(/ /g, '+')}`);
       const data = await response.json();
-
+      const img = await `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`
+      const book = {id: data.docs[0].cover_i, img, title, author};
+      setLibrary((library) => {
+        return [...library, book];
+      })
+      console.log(library);
       
     } catch (error) {
       console.log(error)
     }
+    setLoading(false);
   }
 
   const toggleReadStatus = (id) => {
@@ -72,13 +72,10 @@ function App() {
       />
       <div className='card-container'>
         {library.map((book, id) => {
-          const {title, author} = book;
-          if (title && author) {
           return (
             <BookCard 
-              key={id}
-              title={title} 
-              author={author}
+              id={id}
+              book={book}
               removeBook={removeBook}
               library={library}
               setLibrary={setLibrary}
@@ -88,7 +85,6 @@ function App() {
               setLoading={setLoading}
             />
           );
-          } return null;
         })}
       </div>
       <Footer />
