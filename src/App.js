@@ -109,17 +109,22 @@ function App() {
         setEditing={setEditing}
       />
       <div className='card-container'>
-        {library.map((book) => {
-          return (
-            <BookCard 
-              book={book}
-              loading={loading}
-              toggleReadStatus={toggleReadStatus}
-              editBook={editBook}
-              removeBook={removeBook}
-            />
-          );
-        })}
+        {loading ? 
+          <div className='loader'>
+          </div> 
+          :
+          library.map((book) => {
+            return (
+              <BookCard 
+                book={book}
+                loading={loading}
+                toggleReadStatus={toggleReadStatus}
+                editBook={editBook}
+                removeBook={removeBook}
+              />
+            );
+          })
+        }
       </div>
       <Footer />
     </div>

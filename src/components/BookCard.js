@@ -1,11 +1,11 @@
 export const BookCard = ({book, loading, toggleReadStatus, editBook, removeBook}) => {
   const {id, img, title, author, readStatus} = book
-
+  
   return (
     <div className="card-div">
       <div className="card-cover-container">
         <div className="book-cover-img">
-          {loading ? <div className="loader"></div>: <img src={img} alt="cover"/>}
+          <img src={img} alt="cover"/>
         </div>
       </div>
       <div className="card-info-container">
