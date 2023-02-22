@@ -29,15 +29,6 @@ function App() {
       toggleBookModal();
     };
   };
-
-  const editSubmit = (e) => {
-    e.preventDefault();
-    setEditing(false);
-    setTitle('');
-    setAuthor('');
-    toggleBookModal();
-    console.log('passed');
-  }
   
   const fetchBookData = async (title, author) => {
     setLoading(true);
@@ -61,7 +52,7 @@ function App() {
         book.readStatus = !book.readStatus;
         book.readStatus ? e.target.className = 'read' : e.target.className = 'unread';
         book.readStatus ? e.target.textContent = 'Read' : e.target.textContent = 'Unread';
-      }
+      } return null;
     })
   }
 
@@ -72,8 +63,17 @@ function App() {
         setTitle(book.title);
         setAuthor(book.author);
         toggleBookModal();
-      }
+      } return null;
     })
+  }
+
+  const editSubmit = (e) => {
+    e.preventDefault();
+    if (title && author) {
+      setTitle('');
+      setAuthor('');
+      toggleBookModal();
+    };
   }
 
   const removeBook = (id) => {
@@ -85,7 +85,6 @@ function App() {
       <Header />
       <AddBookButton 
         toggleBookModal={toggleBookModal} 
-        setEditing={setEditing}
       />
       <AddBookModal  
         setLibrary={setLibrary} 

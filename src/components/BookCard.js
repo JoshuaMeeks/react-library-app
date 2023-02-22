@@ -17,7 +17,7 @@ export const BookCard = ({book, loading, toggleReadStatus, editBook, removeBook}
           <button className={readStatus ? 'read' : 'unread'} onClick={(e) => toggleReadStatus(id, e)}>
             {readStatus ? 'Read' : 'Unread'}
           </button>
-          <button className="edit-btn" onClick={() => console.log(id)}>Edit</button>
+          <button className="edit-btn" onClick={() => editBook(id)}>Edit</button>
           <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
         </div>
       </div>

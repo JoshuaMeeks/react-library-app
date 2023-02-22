@@ -1,4 +1,4 @@
-const AddBookButton = ({ toggleBookModal, setEditing }) => {
+const AddBookButton = ({ toggleBookModal }) => {
 
 
   return (
