@@ -1,4 +1,13 @@
-const AddBookModal = ({bookModal, toggleBookModal, handleSubmit, title, author, setTitle, setAuthor}) => {
+const AddBookModal = ({
+  bookModal, 
+  toggleBookModal, 
+  handleSubmit, 
+  title, 
+  author, 
+  setTitle, 
+  setAuthor, 
+  editing, 
+  editSubmit}) => {
 
   return (
     <div className={bookModal ? `modal-background modal-display` : `modal-background`}>
@@ -6,7 +15,7 @@ const AddBookModal = ({bookModal, toggleBookModal, handleSubmit, title, author, 
         <div className="close-modal-container">
           <button className="close-modal-btn" onClick={toggleBookModal}>&times;</button>
         </div>
-        <form className="modal-form" onSubmit={handleSubmit}>
+        <form className="modal-form" onSubmit={editing ? editSubmit : handleSubmit}>
           <input 
             type='text' 
             className='title' 
@@ -25,7 +34,7 @@ const AddBookModal = ({bookModal, toggleBookModal, handleSubmit, title, author, 
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
-          <button className="submit-book-btn">Submit</button>
+          <button className="submit-book-btn">{editing ? 'Edit' : 'Submit'}</button>
         </form>
       </div>
     </div>

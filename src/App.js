@@ -13,6 +13,7 @@ function App() {
   const [author, setAuthor] = useState('');
   const [bookModal, setBookModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [editing, setEditing] = useState(false)
 
   
   const toggleBookModal = () => {
@@ -28,6 +29,15 @@ function App() {
       toggleBookModal();
     };
   };
+
+  const editSubmit = (e) => {
+    e.preventDefault();
+    setEditing(false);
+    setTitle('');
+    setAuthor('');
+    toggleBookModal();
+    console.log('passed');
+  }
   
   const fetchBookData = async (title, author) => {
     setLoading(true);
@@ -58,7 +68,9 @@ function App() {
   const editBook = (id) => {
     library.map(book => {
       if (book.id === id) {
-        console.log(book)
+        setEditing(true);
+        toggleBookModal();
+        console.log(book);
       }
     })
   }
@@ -76,10 +88,13 @@ function App() {
         bookModal={bookModal} 
         toggleBookModal={toggleBookModal}
         handleSubmit={handleSubmit}
+        editSubmit={editSubmit}
         title={title}
         setTitle={setTitle}
         author={author}
         setAuthor={setAuthor}
+        editing={editing}
+        setEditing={setEditing}
       />
       <div className='card-container'>
         {library.map((book) => {
