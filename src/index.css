@@ -227,17 +227,13 @@ button:hover {
   justify-content: center;
   align-items: center;
   height: 180px;
+  contain: content;
   background-color: #94a3b8;
 }
 
 .book-cover-img > img {
   height: 180px;
   max-width: 140px; 
-}
-
-.book-cover-loading-img>img {
-  height: 60px;
-  max-width: 60px;
 }
 
 .card-info-container {

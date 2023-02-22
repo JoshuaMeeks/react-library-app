@@ -69,17 +69,14 @@ function App() {
         setAuthor={setAuthor}
       />
       <div className='card-container'>
-        {library.map((book, id) => {
+        {library.map((book) => {
           return (
             <BookCard 
-              key={id}
               book={book}
               removeBook={removeBook}
-              setLibrary={setLibrary}
               readStatus={readStatus}
               toggleReadStatus={toggleReadStatus}
               loading={loading}
-              setLoading={setLoading}
             />
           );
         })}
