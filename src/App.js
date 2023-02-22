@@ -9,6 +9,7 @@ const url = `http://openlibrary.org/search.json?q=`;
 
 function App() {
   const [library, setLibrary] = useState([]);
+  const [id, setID] = useState('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [bookModal, setBookModal] = useState(false);
@@ -60,6 +61,7 @@ function App() {
     library.map(book => {
       if (book.id === id) {
         setEditing(true);
+        setID(book.id)
         setTitle(book.title);
         setAuthor(book.author);
         toggleBookModal();
@@ -70,9 +72,16 @@ function App() {
   const editSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      setTitle('');
-      setAuthor('');
-      toggleBookModal();
+      library.map(book => {
+        if (book.id === id) {
+          book.title = title;
+          book.author = author;
+          setTitle('');
+          setAuthor('');
+          toggleBookModal();
+          setEditing(false);
+        }
+      })
     };
   }
 
