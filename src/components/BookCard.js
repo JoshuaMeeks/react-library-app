@@ -1,8 +1,7 @@
-
-export const BookCard = ({book, removeBook, loading, readStatus, toggleReadStatus}) => {
+export const BookCard = ({book, removeBook, loading, toggleReadStatus}) => {
+  const {id, img, title, author, readStatus} = book
 
   if (!loading) {
-    const {id, img, title, author} = book
     return (
       <div className="card-div">
         <div className="card-cover-container">
