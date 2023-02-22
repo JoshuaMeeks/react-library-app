@@ -45,15 +45,15 @@ function App() {
     setLoading(false);
   }
 
-  const toggleReadStatus = (id) => {
+  const toggleReadStatus = (id, e) => {
     library.map(book => {
       if (book.id === id) {
-        console.log(book);
-        return book.readStatus = !book.readStatus;
-      } 
-      return null
+        book.readStatus = !book.readStatus;
+        book.readStatus ? e.target.className = 'read' : e.target.className = 'unread';
+        book.readStatus ? e.target.textContent = 'Read' : e.target.textContent = 'Unread';
+      }
     })
-  };
+  }
 
   const removeBook = (id) => {
     setLibrary(library.filter(book => book.id !== id));
@@ -78,9 +78,9 @@ function App() {
           return (
             <BookCard 
               book={book}
+              loading={loading}
               removeBook={removeBook}
               toggleReadStatus={toggleReadStatus}
-              loading={loading}
             />
           );
         })}

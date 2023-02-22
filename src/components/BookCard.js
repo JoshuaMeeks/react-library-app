@@ -1,4 +1,4 @@
-export const BookCard = ({book, removeBook, loading, toggleReadStatus}) => {
+export const BookCard = ({book, loading, removeBook, toggleReadStatus}) => {
   const {id, img, title, author, readStatus} = book
 
   if (!loading) {
@@ -14,7 +14,7 @@ export const BookCard = ({book, removeBook, loading, toggleReadStatus}) => {
           <p className="book-author">{author}</p>
         </div>
         <div className="card-btn-container">
-          <button className={readStatus ? `read` : `unread`} onClick={() => toggleReadStatus(id)}>{readStatus ? `Read` : `Unread`}</button>
+          <button className={readStatus ? 'read' : 'unread'} onClick={(e) => toggleReadStatus(id, e)}>Unread</button>
           <button className="edit-btn" onClick={() => console.log(id)}>Edit</button>
           <button className="remove-btn" onClick={() => removeBook(id)}>Remove</button>
         </div>
