@@ -47,7 +47,11 @@ function App() {
   }
 
   const toggleReadStatus = (id) => {
-    setReadStatus(state => !state);
+    library.map(book => {
+      if (book.id === id) {
+        console.log(book);
+      } return null
+    })
   };
 
   const removeBook = (id) => {

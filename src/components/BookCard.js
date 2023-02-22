@@ -7,7 +7,7 @@ export const BookCard = ({book, removeBook, loading, readStatus, toggleReadStatu
       <div className="card-div">
         <div className="card-cover-container">
           <div className="book-cover-img">
-            <img src={img} alt="book cover"/>
+            <img src={img} alt="cover"/>
           </div>
         </div>
         <div className="card-info-container">
