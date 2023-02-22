@@ -55,6 +55,14 @@ function App() {
     })
   }
 
+  const editBook = (id) => {
+    library.map(book => {
+      if (book.id === id) {
+        console.log(book)
+      }
+    })
+  }
+
   const removeBook = (id) => {
     setLibrary(library.filter(book => book.id !== id));
   };
@@ -79,8 +87,9 @@ function App() {
             <BookCard 
               book={book}
               loading={loading}
-              removeBook={removeBook}
               toggleReadStatus={toggleReadStatus}
+              editBook={editBook}
+              removeBook={removeBook}
             />
           );
         })}
