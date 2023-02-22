@@ -82,7 +82,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <AddBookButton toggleBookModal={toggleBookModal} />
+      <AddBookButton 
+        toggleBookModal={toggleBookModal} 
+        setEditing={setEditing}
+      />
       <AddBookModal  
         setLibrary={setLibrary} 
         bookModal={bookModal} 

@@ -6,7 +6,7 @@ const AddBookModal = ({
   author, 
   setTitle, 
   setAuthor, 
-  editing, 
+  editing,
   editSubmit}) => {
 
   return (
