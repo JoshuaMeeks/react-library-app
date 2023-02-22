@@ -23,7 +23,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      fetchBookData(title);
+      fetchBookData(title, author);
       setTitle('');
       setAuthor('');
       toggleBookModal();
@@ -40,8 +40,6 @@ function App() {
       setLibrary((library) => {
         return [...library, book];
       })
-      console.log(library);
-      
     } catch (error) {
       console.log(error)
     }
@@ -74,10 +72,9 @@ function App() {
         {library.map((book, id) => {
           return (
             <BookCard 
-              id={id}
+              key={id}
               book={book}
               removeBook={removeBook}
-              library={library}
               setLibrary={setLibrary}
               readStatus={readStatus}
               toggleReadStatus={toggleReadStatus}
