@@ -7,13 +7,25 @@ const AddBookModal = ({
   setTitle, 
   setAuthor, 
   editing,
+  setEditing,
   editSubmit}) => {
 
   return (
     <div className={bookModal ? `modal-background modal-display` : `modal-background`}>
       <div className="modal">
         <div className="close-modal-container">
-          <button className="close-modal-btn" onClick={toggleBookModal}>&times;</button>
+          <button 
+            className="close-modal-btn" 
+            onClick={() => {
+              if (editing) {
+                setEditing(false)
+                toggleBookModal()
+              } else {
+                toggleBookModal()
+              }
+            }}
+            >&times;
+          </button>
         </div>
         <form className="modal-form" onSubmit={editing ? editSubmit : handleSubmit}>
           <input 
