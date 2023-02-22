@@ -1,29 +1,8 @@
-import { useEffect, useState } from "react";
-const url = `http://openlibrary.org/search.json?q=`;
+import { useState } from "react";
 
-export const BookCard = ({ key, title, author, toggle, removeBook, readStatus, toggleReadStatus}) => {
-  const [loading, setLoading] = useState(true);
-  const [id, setID] = useState('')
-  const [img, setImg] = useState('');
-  const [book, setBook] = useState({id: '', img: '', title, author});
+export const BookCard = ({id, img, title, author, removeBook, loading, readStatus, key, toggleReadStatus}) => {
 
-  const fetchBookData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(`${url}${title.replace(/ /g, '+')}`);
-      const data = await response.json();
-      console.log(`https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-M.jpg`);
-      
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  
-  useEffect(() => {
-    fetchBookData();
-  }, [])
-
-  if (loading) {
+  if (!loading) {
     return (
       <div className="card-div">
         <div className="card-cover-container">
