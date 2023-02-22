@@ -69,8 +69,9 @@ function App() {
     library.map(book => {
       if (book.id === id) {
         setEditing(true);
+        setTitle(book.title);
+        setAuthor(book.author);
         toggleBookModal();
-        console.log(book);
       }
     })
   }

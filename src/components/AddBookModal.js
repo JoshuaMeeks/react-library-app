@@ -23,8 +23,8 @@ const AddBookModal = ({
               } else {
                 toggleBookModal()
               }
-            }}
-            >&times;
+            }}>
+            &times;
           </button>
         </div>
         <form className="modal-form" onSubmit={editing ? editSubmit : handleSubmit}>
@@ -42,7 +42,7 @@ const AddBookModal = ({
             className="author" 
             placeholder="Add an author" 
             id='author'
-            name='authore'
+            name='author'
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
