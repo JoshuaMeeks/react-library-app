@@ -112,6 +112,7 @@ function App() {
         setAuthor={setAuthor}
         editing={editing}
         setEditing={setEditing}
+        duplicateBookMessage = {duplicateBookMessage}
       />
       <div className='card-container'>
         {loading ? 
