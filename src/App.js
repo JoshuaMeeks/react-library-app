@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import AddBookButton from './components/AddBookButton';
@@ -8,7 +8,7 @@ import { BookCard } from './components/BookCard';
 const url = `http://openlibrary.org/search.json?q=`;
 
 function App() {
-  const [library, setLibrary] = useState([]);
+  const [library, setLibrary] = useState(JSON.parse(localStorage.getItem('library')) || []);
   const [id, setID] = useState('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -96,6 +96,12 @@ function App() {
   const removeBook = (id) => {
     setLibrary(library.filter(book => book.id !== id));
   };
+
+  useEffect(() => {
+      localStorage.setItem('library', JSON.stringify(library));
+  }, [library])
+
+
 
   return (
     <div className="App">
