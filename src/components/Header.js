@@ -1,10 +1,10 @@
-import { FaBookOpen } from 'react-icons/fa'
+import { FaBookReader } from 'react-icons/fa'
 
 export const Header = () => {
   return (
     <header>
       <div className='logo'>
-        <FaBookOpen />
+        <FaBookReader />
         <span className='logo-lettering'>Library</span>
       </div>
     </header>
