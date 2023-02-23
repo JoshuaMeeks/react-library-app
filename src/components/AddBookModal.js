@@ -9,6 +9,7 @@ const AddBookModal = ({
   editing,
   setEditing,
   editSubmit,
+  duplicateBookMessage
   }) => {
 
   return (
@@ -32,6 +33,7 @@ const AddBookModal = ({
             &times;
           </button>
         </div>
+        { duplicateBookMessage ? <div><h4>This book is already in your library</h4></div> : null }
         <form className="modal-form" onSubmit={editing ? editSubmit : handleSubmit}>
           <input 
             type='text' 
