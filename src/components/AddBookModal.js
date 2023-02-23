@@ -23,6 +23,8 @@ const AddBookModal = ({
                 setAuthor('');
                 toggleBookModal();
               } else {
+                setTitle('');
+                setAuthor('');
                 toggleBookModal();
               }
             }}>

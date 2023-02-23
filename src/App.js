@@ -14,21 +14,25 @@ function App() {
   const [author, setAuthor] = useState('');
   const [bookModal, setBookModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [editing, setEditing] = useState(false)
-
+  const [editing, setEditing] = useState(false);
   
   const toggleBookModal = () => {
     setBookModal(state => !state);
   };
   
-  const handleSubmit = (e) => {
+ const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      fetchBookData(title, author);
-      setTitle('');
-      setAuthor('');
-      toggleBookModal();
-    };
+      const bookDuplicate = library.find(book => book.title === title);
+      if (bookDuplicate) {
+        console.log('error, duplicate entry');
+      } else {
+        fetchBookData(title, author);
+        setTitle('');
+        setAuthor('');
+        toggleBookModal(false);
+      }
+    }
   };
   
   const fetchBookData = async (title, author) => {
@@ -80,7 +84,7 @@ function App() {
           setAuthor('');
           toggleBookModal();
           setEditing(false);
-        }
+        } return null;
       })
     };
   }
