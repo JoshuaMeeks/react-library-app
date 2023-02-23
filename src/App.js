@@ -15,7 +15,7 @@ function App() {
   const [bookModal, setBookModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [duplicateBookMessage, setDuplicateBookMessage] = useState(true);
+  const [duplicateBookMessage, setDuplicateBookMessage] = useState(false);
   
   const toggleBookModal = () => {
     setBookModal(state => !state);
@@ -29,7 +29,7 @@ function App() {
         setDuplicateBookMessage(true);
         setTimeout(() => {
           setDuplicateBookMessage(false);
-        }, 3000);
+        }, 5000);
       } else {
         fetchBookData(title, author);
         setTitle('');
