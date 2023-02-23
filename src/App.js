@@ -15,6 +15,7 @@ function App() {
   const [bookModal, setBookModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [duplicateBookMessage, setDuplicateBookMessage] = useState(true);
   
   const toggleBookModal = () => {
     setBookModal(state => !state);
@@ -23,8 +24,8 @@ function App() {
  const handleSubmit = (e) => {
     e.preventDefault();
     if (title && author) {
-      const bookDuplicate = library.find(book => book.title === title);
-      if (bookDuplicate) {
+      const duplicate = library.find(book => book.title === title);
+      if (duplicate) {
         console.log('error, duplicate entry');
       } else {
         fetchBookData(title, author);

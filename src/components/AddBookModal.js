@@ -8,7 +8,8 @@ const AddBookModal = ({
   setAuthor, 
   editing,
   setEditing,
-  editSubmit}) => {
+  editSubmit,
+  }) => {
 
   return (
     <div className={bookModal ? `modal-background modal-display` : `modal-background`}>
