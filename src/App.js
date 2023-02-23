@@ -15,7 +15,7 @@ function App() {
   const [bookModal, setBookModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [duplicateBookMessage, setDuplicateBookMessage] = useState(false);
+  const [duplicateBookMessage, setDuplicateBookMessage] = useState(true);
   
   const toggleBookModal = () => {
     setBookModal(state => !state);

@@ -40,6 +40,10 @@ body {
   background-color: #e2e8f0;
 }
 
+.duplicate-message {
+  background-color: #ef4444;
+}
+
 .modal-form {
   display: flex;
   height: 80%;
